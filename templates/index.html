@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Embed Google Sheet</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <form action="/search" method="post">
+            <div class="form-group">
+                <input type="text" class="form-control" name="search-input" placeholder="Search">
+            </div>
+        </form>
+        {% if filtered_df %}
+            {{ filtered_df|safe }}
+        {% else %}
+            <p class="error-message">{{ error_message }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
